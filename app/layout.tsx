@@ -1,6 +1,7 @@
 import '@/app/ui/global.css';
 import { inter } from '@/app/ui/fonts';
 import { Metadata } from 'next';
+import { SWRProvider } from '@/app/providers/swr-provider';
 
 export const metadata: Metadata = {
   title: {
@@ -16,8 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
-    </html>
+    <SWRProvider>
+      <html lang="en">
+        <body className={`${inter.className} antialiased`}>{children}</body>
+      </html>
+    </SWRProvider>
   );
 }
